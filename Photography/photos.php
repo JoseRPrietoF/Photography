@@ -143,6 +143,23 @@ class photos
 		return $photos; // return the array of albums
 	}
 	
+	function getMediaobject($mediaID)
+	{
+		global $con; // Fa la variable global de l'arxiu dades importat, la fa global
+		$query = "SELECT * FROM media WHERE idMedia = $mediaID";
+		$result = $con->query($query);
+		while ( $row = $result->fetch_assoc() )
+		{
+			$media = new Media();
+			$media->setId( $row['idMedia']);
+			$media->setName($row['nameMedia']);
+			$media->setIdAlbum($albumID);
+			$media->setDescription($row['description']);
+			$media->route();
+		}
+		return $media; // return the array of albums
+	}
+	
 	function getMediasRoute($albumRoute)
 	{
 		$albumID = $this->getAlbumIDfromRoute($albumRoute); // Get the id of album
@@ -304,47 +321,32 @@ class photos
 		} return false;
 	}
 	
-	/*
-	function insertMedias($album,$photoArray)
-	{
-		$idAlbum = $this->getAlbumID($album);
-		echo $album + '<br>';
-		print_r($photoArray);
-		$dst = 'albums/album' . $idAlbum . '/' . $photoArray[1]; // name
-		if ( is_uploaded_file($photoArray[0]) ) {
-			move_uploaded_file($photoArray[0], $dst);
-			if ($this -> insertMediasDB ( $idAlbum, $photoArray[1] ))//album and name
-				echo "Posible problema en la subida a la BD. Fichero: " . $photoArray[0]."<br>"; 
-		} else {
-			echo "Posible problema en la subida. Fichero: " . $photoArray[0]."<br>";
-		}
-	}
-	*/
-	
-	function insertMedias($album,$mediaName,$name,$description)
+	function insertMedias($album,$mediaName,$name,$description,$realName) // Realname para coger la extension solo
 	{
 		$idAlbum = $album->getId();
-// 		echo 'Nom Album: '. $album->getName() . '<br>';
-// 		echo 'Nom foto ' . $name . '<br>';
-// 		echo 'Descripcio ' . $description . '<br>';
-// 		echo $mediaName;
-		//echo $photoArray[0] + '</br>';
-		//echo $photoArray[1] + '</br>';
-		
-		 NO --->>>> AGAFA BE EL DIRECTORI
-		$dst = 'albums/album' . $idAlbum . '/' . $name; // name
+		$name .= '.' . $this -> obtenerExtensionFichero($realName); // añadimos extension
+		$dst = '../albums/album' . $idAlbum . '/' . $name; // name
+		echo $dst;
 		if ( is_uploaded_file($mediaName) ) {
 			move_uploaded_file($mediaName, $dst);
-			if ($this -> insertMediasDB ( $idAlbum, $mediaName ))//album and name
-				echo "Posible problema en la subida a la BD. Fichero: " . $mediaName."<br>";
+			if ($this -> insertMediasDB ( $idAlbum, $name, $description )){
+				header('Location: ../index.php');
+			}//album and name
+				else echo "Posible problema en la subida a la BD. Fichero: " . $name."<br>";
 		} else {
-			echo "Posible problema en la subida. Fichero: " . $mediaName."<br>";
+			echo "Posible problema en la subida. Fichero: " . $name."<br>";
 		}
 	}
 	
-	private function insertMediasDB($idAlbum,$photoName)
+	function obtenerExtensionFichero($str)
 	{
-		$query = "INSERT INTO media (nameMedia, idAlbum) VALUES ('$photoName', '$idAlbum')";
+		return end(explode(".", $str));
+	}
+	
+	
+	private function insertMediasDB($idAlbum,$photoName, $description)
+	{
+		$query = "INSERT INTO media (nameMedia, idAlbum, description) VALUES ('$photoName', '$idAlbum', '$description')";
 		if ( $this->con->query($query) )return true;
 		return false;
 	}
@@ -357,7 +359,7 @@ class photos
 	
 	private function deleteMediaDB($Media) 
 	{
-		$query = "DELETE FROM media WHERE idMedia = ".$Media->id;
+		$query = "DELETE FROM media WHERE idMedia = ".$Media->getId();
 		if ($this->con->query($query) )
 		{
 			return true;	
@@ -369,8 +371,8 @@ class photos
 	
 	private function deleteRealMedia($Media) 
 	{
-		echo $Media->route;
-		if ( unlink($Media->route) )
+		echo $Media->getRoute();
+		if ( unlink( '../'.$Media->getRoute() ))
 		{
 			return true;	
 		} else{
@@ -381,16 +383,18 @@ class photos
 	}
 	function deleteAlbum($album)
 	{
-		$this -> deleteRealAlbum($album);
-		$this -> deleteAlbumDB($album);
+		if ($this -> deleteRealAlbum($album) && $this -> deleteAlbumDB($album)){
+			header('Location: ../index.php');
+		}
+			
 	}
 	
 	private function deleteAlbumDB($album) 
 	{
-		$query = "DELETE FROM album WHERE idAlbum = ".$album->id;
+		$query = "DELETE FROM album WHERE idAlbum = ".$album->getId();
 		if ($this->con->query($query) )
 		{
-			$query = "DELETE FROM media WHERE idAlbum = ".$album->id;
+			$query = "DELETE FROM media WHERE idAlbum = ".$album->getId();
 			if ( $this->con->query($query) )
 				return true;
 			else
@@ -415,7 +419,7 @@ class photos
 	
 	function eliminarDir($album)
 	{
-		$carpeta = $album -> route;
+		$carpeta = '../' . $album -> getRoute();
 		foreach(glob($carpeta . "/*") as $archivos_carpeta)
 		{
 			echo $archivos_carpeta;

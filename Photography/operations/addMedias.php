@@ -10,7 +10,8 @@ $t -> checkRang();
 $album = unserialize($_SESSION['album']);
 $name = $_POST['name'];
 $description = $_POST['description'];
-$media = $_FILES['media']['tmp_name'];
+$media = $_FILES['media']['tmp_name']; // Nombre temporal
+$realName = $_FILES['media']['name']; // Nombre de la foto real
 
 
 
@@ -19,5 +20,5 @@ $media = $_FILES['media']['tmp_name'];
 // $photos[] = $photo;
 
 ///// INSERT PHOTO 
-$p->insertMedias($album,$media,$name,$description);
+$p->insertMedias($album,$media,$name,$description,$realName);
 ?>

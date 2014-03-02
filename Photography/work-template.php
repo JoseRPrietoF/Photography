@@ -47,7 +47,8 @@ $t -> includes();
     
     <header><!-- Work Showcase Section Start -->
     
-    	<h1><?php echo $album->getName(); ?></h1><!-- Title of project -->
+    	<h1><?php $t -> deleteAlbumButton($album);
+    				echo $album->getName(); ?></h1><!-- Title of project -->
         <h2><?php echo $album->getCategory(); ?></h2><!-- Category of project -->
         <!-- Description of project start -->
         <p><?php echo $album->getDescription(); ?></p>

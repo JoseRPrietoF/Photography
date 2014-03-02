@@ -26,6 +26,25 @@ class Template
 		return true;
 	}
 	
+	public function checkRangUser(){
+		if(isset($_SESSION['user']) )
+		{
+			$user = unserialize($_SESSION['user']);
+			if(!$user->getRang() > 1) // Comprovem el rang dels usuaris
+				return false;
+		} else return false;
+		return true;
+	}
+	
+	public function deleteAlbumButton($album){
+		if ($this -> checkRangUser()){
+			echo '<a href="operations/deleteAlbum.php?album='.urlencode(serialize($album)).'"
+					class="deleteAlbumLink">
+					<div class="deleteAlbum"><i class="fa fa-minus-square-o"></i> </div>
+					</a>';
+		}
+	}
+	
 	public function includes()
 	{
 		echo '<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700|Cookie" rel="stylesheet" type="text/css">
@@ -69,17 +88,32 @@ class Template
 		}
 	}
 	
+	private function deleteMediaButton($media)
+	{
+		if($this -> checkRangUser())
+		{
+			echo '<a href="operations/deleteMedia.php?media='.urlencode(serialize($media)).'" 
+					class="deleteMediaLink">
+					<div class="deletePhoto"><i class="fa fa-minus-square-o"></i> </div>
+					</a>';
+		}
+	}
+	
 	public function pringMediaAlbum($id)
 	{
 		$mediaArray = $this-> p -> getMediasAlbumObject($id);
 		foreach ($mediaArray as $media)
 		{
+			echo '<div class="divImages">';
+			$this -> deleteMediaButton($media);
 			echo '<a class="sb" href="'.$media->getRoute().'" title="'.$media->getDescription().'"> 
 					<img src="'.$media->getRoute().'" alt="'.$media->getName().'"> </a>';
+			
 			/* <!-- Use whatever images you like - they will automatically fit the width of the page -->*/
 			echo '<h5>&ndash; '.$media->getDescription().'</h5>';
 			echo '</br></br></br></br></br></br></br></br></br>';
 			/*<!-- Image title -->*/
+			echo '</div>';
 		}
 		if( isset($_SESSION['user']) )
 		{

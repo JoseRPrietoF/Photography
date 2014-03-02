@@ -22,6 +22,7 @@ class Album
 	
 	public function getRoute()
 	{
+		$this -> route = 'albums/album' . $this -> id;
 		return $this->route;
 	}
 	
