@@ -3,8 +3,10 @@
 require_once ('template.php');
 require_once ('dades.php');
 require_once ('user.php');
+require_once ('personalization/Template_Personalization.php');
 ini_set("display_errors", "1"); // per mostrar els errors
 $t = new Template();
+$p = new T_Personalization();
 ?>
 
 
@@ -20,7 +22,7 @@ $t = new Template();
 <!-- END OF DON'T TOUCH -->
 
 <!-- Website Title -->
-<title>Liquid Gem</title>
+<title><?php $p -> print_title_page()?></title>
 <!-- END OF Website Title -->
 
 <!--  Website description - Change the 'content' section to whatever you want -->
@@ -39,7 +41,7 @@ $t -> includes();
 	<div id="top">
         <div id="logo">
             <img id="logoimage" src="images/logo.png" alt="logo">	<!-- Logo image -->
-            <h1 id="logotitle">liquid gem</h1>	<!-- Logo text -->
+            <h1 id="logotitle"><?php $p -> print_title_page()?></h1>	<!-- Logo text -->
         </div><!--/logo-->
     
         <!-- Navigation Start -->
@@ -52,8 +54,8 @@ $t -> includes();
     
     
     <header>	<!-- Header Title Start -->
-    	<h1>Hello there, I'm <span>&quot;Your Name&quot;</span>. Welcome to my design portfolio!</h1>
-        <h2>&ndash; Photographer and Web Developer &ndash;</h2>
+    	<h1><?php $p -> print_header1()?></h1>
+        <h2>&ndash; <?php $p -> print_header2()?> &ndash;</h2>
     </header>	<!-- Header Title End -->
     <section id="slideshow">	<!-- Slideshow Start -->
         <div class="html_carousel">
@@ -97,7 +99,7 @@ $t -> includes();
     
     
     <section id="bottom"> <!-- Last Words Section Start -->
-    	<h3>Thanks for looking at my new website!</h3>
+    	<h3><?php $p -> print_bottom()?></h3>
     </section><!-- Last Words Section End-->
 </div>
 
@@ -123,10 +125,10 @@ $t -> includes();
 <!-- DON'T TOUCH THIS SECTION END -->        
         
     	<section class="right social"> <!-- Social Icons Start -->
-		<a href="http://plus.google.co.uk"><img class="icon" src="images/icons/google.png" width="32" height="32" alt="google"></a><!-- Replace with any 32px x 32px icons -->
-        <a href="http://youtube.com"><img class="icon" src="images/icons/youtube.png" width="32" height="32" alt="youtube"></a><!-- Replace with any 32px x 32px icons -->
-        <a href="http://facebook.com"><img class="icon" src="images/icons/facebook.png" width="32" height="32" alt="facebook"></a><!-- Replace with any 32px x 32px icons -->
-        <a href="http://twitter.com"><img class="icon" src="images/icons/twitter.png" width="32" height="32" alt="twitter"></a><!-- Replace with any 32px x 32px icons -->
+		<a href="<?php $p->print_googleP()?>"><img class="icon" src="images/icons/google.png" width="32" height="32" alt="google"></a><!-- Replace with any 32px x 32px icons -->
+        <a href="<?php $p->print_youtube()?>"><img class="icon" src="images/icons/youtube.png" width="32" height="32" alt="youtube"></a><!-- Replace with any 32px x 32px icons -->
+        <a href="<?php $p->print_facebook()?>"><img class="icon" src="images/icons/facebook.png" width="32" height="32" alt="facebook"></a><!-- Replace with any 32px x 32px icons -->
+        <a href="<?php $p->print_twitter()?>"><img class="icon" src="images/icons/twitter.png" width="32" height="32" alt="twitter"></a><!-- Replace with any 32px x 32px icons -->
         </section> <!-- Social Icons End -->
         <p>lets get social - </p>
         </section> <!-- Social Icons End -->
