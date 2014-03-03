@@ -40,10 +40,11 @@
 		<input type='password'   name='psw' id='psw'/>
 		<br/><br/>
 		<input class="button" type="submit" value="New User" name="boto">
-		
-		<?php if( $_SESSION['session'] == 0) echo "<br/>Incorrect user or password";
-				else if( $_SESSION['session'] == -5) echo "<br/>This user already exists";
-	
+		<div class="error">
+		<?php if( $_SESSION['session'] == -5) echo "<br/>This user already exists";
+		?>
+		</div>
+		<?php 
 	} else {
 		echo "<h3>User: </h3> " . $user->getMail(); 
 		?>

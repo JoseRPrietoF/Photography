@@ -77,12 +77,12 @@ $t -> includes();
     </section>	<!-- Slideshow End -->
     
     
-    <aside id="about" class=" left"> <!-- Text Section Start -->
-    	<h3>Login!</h3>
+    <aside id="about" class="left "> <!-- Text Section Start -->
+    	<h3 class="titleForm">Login!</h3>
     	<p><?php include 'login.php';?></p>
     </aside>
     <aside class="left">
-    	<h3>New User</h3>
+    	<h3  class="titleForm">New User</h3>
     	<p><?php include 'login/newUser.php';?></p>
     </aside>
     <div class="clearfix"></div> <!-- Text Section End -->

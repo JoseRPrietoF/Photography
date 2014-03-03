@@ -115,7 +115,7 @@ class logUser
 					header('Location: ../index.php');
 				} else {
 					$_SESSION['session'] = 0;
-					echo "Incorrect mail or password";
+					echo '<div class="error">Incorrect mail or password</div>';
 					header('Location: ../formUser.php');
 				}
 				break;

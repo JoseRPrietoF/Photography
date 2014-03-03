@@ -204,3 +204,11 @@ body, html {
 .deleteAlbum{
 	
 }
+.error{
+	color: red;
+	font-size:27px;
+}
+.left .titleForm{
+	font-size:50px;
+	color: blue;
+}

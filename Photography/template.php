@@ -30,7 +30,7 @@ class Template
 		if(isset($_SESSION['user']) )
 		{
 			$user = unserialize($_SESSION['user']);
-			if(!$user->getRang() > 1) // Comprovem el rang dels usuaris
+			if($user->getRang() < 1) // Comprovem el rang dels usuaris
 				return false;
 		} else return false;
 		return true;
@@ -57,8 +57,8 @@ class Template
 				<script type="text/javascript" src="scripts/jquery.easing.1.3.js"></script>
 				<script type="text/javascript" src="scripts/jquery.form.js"></script> 
 				<script type="text/javascript" src="scripts/scripts.js"></script>
-				<script type="text/javascript" src="scripts/smoothbox.js"></script>
-				<script type="text/javascript" src="scripts/smoothbox.min.js"></script> ';
+				<script type="text/javascript" src="scripts/smoothbox.min.js"></script>
+				<script type="text/javascript" src="scripts/smoothbox.js"></script> ';
 	}
 	
 	public function printAlbums()
@@ -66,6 +66,7 @@ class Template
 		$this->albumsArray = photos::getAlbumsObject(); // Get the albums by name
 		foreach ($this->albumsArray as $album)
 		{
+			
 			$salbum = serialize($album); // Album serialized
 			echo '<div class="item">';
 			echo '<a href="work-template.php?album='.urlencode($salbum).'">';

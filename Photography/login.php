@@ -8,7 +8,7 @@
 		$user = $_SESSION['user'];
 		$user = unserialize( $user );
 	} else $user = new User(null,null,null);
-	echo $_SESSION['session']; 
+	//echo $_SESSION['session']; 
 	echo '<form action="login/login.php" method="post" >';
 	if ( $_SESSION['session'] <= 1) { ?>
 		<h4> Mail: </h4>
@@ -20,8 +20,8 @@
 		<br/>
 		<input class="button" type="submit" value="Login" name="boto">
 		
-		<?php if( $_SESSION['session'] == 0) echo "<br/>Incorrect user or password";
-				else if( $_SESSION['session'] == -5) echo "<br/>This user already exists";
+		<?php if( $_SESSION['session'] == 0) echo '<div class="error"><br/>Incorrect user or password</div>';
+				else if( $_SESSION['session'] == -5) echo '<div class="error"><br/>This user already exists</div>';
 	
 	} else {
 		echo "<h3>User: </h3> " . $user->getMail(); 
