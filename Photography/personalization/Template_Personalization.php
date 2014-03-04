@@ -1,4 +1,6 @@
 <?php
+ini_set("display_errors", "1"); // per mostrar els errors
+
 class T_Personalization {
 	var $about_me_title;
 	var $about_me_text;
@@ -16,7 +18,9 @@ class T_Personalization {
 	var $facebook;
 	
 	function __construct(){
-		if(file_exists('personalization/pers.json') || file_exists('../personalization/pers.json')){
+		if(file_exists('personalization/pers.json')
+		|| file_exists('../personalization/pers.json') 
+		|| file_exists('pers.json')){
 			$this -> copyJson();
 		} else{
 			$this -> createJson();
@@ -28,6 +32,9 @@ class T_Personalization {
 			$obj = json_decode(file_get_contents('personalization/pers.json'));
 		else if(file_exists('../personalization/pers.json'))
 			$obj = json_decode(file_get_contents('../personalization/pers.json'));
+		else if (file_exists(file_exists('pers.json')))
+			$obj = json_decode(file_get_contents('pers.json'));
+		
 		$this -> about_me_text = $obj -> about_me_text;
 		$this -> about_me_title = $obj -> about_me_title;
 		$this -> title_page = $obj -> title_page;
@@ -40,6 +47,18 @@ class T_Personalization {
 		$this -> facebook = $obj -> facebook;
 		$this -> header1 = $obj -> header1;
 		$this -> header2 = $obj -> header2;
+	}
+	
+	function modifyJson(){ // Lo vuelve a crear, realmente
+		$jsonencoded = json_encode($this);
+		if (file_exists('pers.json')){
+			unlink('pers.json');
+		}
+		$fh = fopen("pers.json", 'w');
+		//else echo '<alert> No existe la carpeta personalitzation</alert>';
+		fwrite($fh, $jsonencoded);
+		fclose($fh);
+		echo '<alert> h </alert>';
 	}
 	
 	function print_about_me_title(){
@@ -119,7 +138,7 @@ class T_Personalization {
 		$this -> youtube = utf8_encode("http://www.youtube.com/user/esarabellissimo");
 		
 		$jsonencoded = json_encode($this);
-		if (is_dir('personalitzation'))
+		if (is_dir('personalization'))
 			$fh = fopen("personalization/pers.json", 'w');
 		else if(is_dir('../personalitzation'))
 			$fh = fopen("../personalization/pers.json", 'w');

@@ -612,5 +612,51 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 	text-align:center;
 }
 
+/*ADMIN PANEL*/
+.admin{
+	font-family:Cookie, Arial, Helvetica, sans-serif;
+	text-align:center;
+	margin-top:4%;
+	width:48%;
+	float:left;
+	margin-bottom:2%;
+}
+
+.admin div{
+	font-family:Cookie, Arial, Helvetica, sans-serif;
+	font-size:180%;
+	font-weight:normal;
+	text-align:center;
+	color:#33CCCC;
+	margin-bottom:5%;
+	text-shadow: 0 1px 1px #dadada;
+}
+
+.admin p{
+	font-family:Lato, Arial, Helvetica, sans-serif;
+	font-size:100%;
+	line-height:140%;
+}
+
+.admin p a{
+	color:#33CCCC;
+	text-decoration:none;
+}
+
+.admin .titleForm{
+	font-size:50px;
+	color: blue;
+}
+
+.admin h4{
+	font-family:Cookie, Arial, Helvetica, sans-serif;
+	font-size:180%;
+	font-weight:normal;
+	color:#33CCCC;
+	margin-bottom:10px;
+}
+
+.admin input{
 	
+}
 	

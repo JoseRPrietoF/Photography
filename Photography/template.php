@@ -143,6 +143,7 @@ class Template
 	                <li><a href="index.php#work">Work</a></li>
 	                <li><a href="index.php#footer">Contact</a></li>
 	             	<li><a href="index.php"><b>'.$this->user->getName().'</b><a></li>
+	             	<li><a href="admin.php"><b>Administr.</b></a></li>
 	                <li><a href="login/logout.php">Logout</a></li>
 	            </ul>
 	        </nav>	<!-- Navigation End -->';
