@@ -80,29 +80,67 @@ $t -> includes();
     </section>	<!-- Slideshow End -->
     
     
-    <aside id="about" class="admin "> <!-- Text Section Start -->
+    <div id="about" class="admin "> <!-- Text Section Start -->
     	<form action="personalization/persAdmin.php" method="post" enctype="multipart/form-data">
 	    	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 	    	<h3 class="titleForm">Administration </h3>
 	    	</br>
 	    	</br></br></br>
-	    	<div>Title page: 
-	    	<input type='text'   name='title_page' id='title_page'/></div>
-	    	
-	    	</br></br></br>
-	    	<div>Header one: 
-	    	<input type='text'   name='header1' id='header1'/></div>
-	    	</br></br></br>
-	    	<div>Header two: 
-	    	<input type='text'   name='header2' id='header2'/></div>
-	    	</br></br></br>
+	    	<div class="adminLeft">
+		    	<div>Title page: 
+		    	<input type='text'   name='title_page' id='title_page'/></div>
+		    	
+		    	</br></br></br>
+		    	<div>Header one: 
+		    	<input type='text'   name='header1' id='header1'/></div>
+		    	</br></br></br>
+		    	<div>Header two: 
+		    	<input type='text'   name='header2' id='header2'/></div>
+		    	</br></br></br>
+		    	<div>Bottom of the page: 
+		    	<input type='text'   name='bottom' id='bottom'/></div>
+		    	</br></br></br>
+		    	
+	    	</div>
+	    	<div class="adminRight">
+	    		<div>About me title: 
+		    	<input type='text'   name='about_me_title' id='about_me_title'/></div>
+		    	</br></br></br>
+		    	<div>About me text: 
+		    	<input type='text'   name='about_me_text' id='about_me_text'/></div>
+		    	</br></br></br>
+	    		<div>My work title: 
+		    	<input type='text'   name='my_work_title' id='my_work_title'/></div>
+		    	</br></br></br>
+		    	<div>My work text: 
+		    	<input type='text'   name='my_work_text' id='my_work_text'/></div>
+		    	</br></br></br>
+		    	
+	    	</div>
+	    	<div class="adminLeft" >
+	    		<h4 style="color:blue;">Social network: </h4> </br>
+		    	<div>Google+: 
+		    	<input type='text'   name='googleP' id='googleP'/></div>
+		    	
+		    	</br></br></br>
+		    	<div>Facebook: 
+		    	<input type='text'   name='facebook' id='facebook'/></div>
+		    	</br></br></br>
+		    	<div>Twitter: 
+		    	<input type='text'   name='twitter' id='twitter'/></div>
+		    	</br></br></br>
+		    	<div>Youtube: 
+		    	<input type='text'   name='youtube' id='youtube'/></div>
+		    	</br></br></br>
+		    	
+	    	</div>
 <!-- 	    	<h4>Switch a photo or video: </h4> -->
 <!-- 	    	</br> -->
 <!-- 	    	<input name='media' type='file'> -->
 <!-- 	    	</br> </br> </br> </br> -->
 	    	<input class="button" type="submit" value="Submit" name="boto">
     	</form>
-    </aside>
+    </div>
     <div class="clearfix"></div> <!-- Text Section End -->
     
     

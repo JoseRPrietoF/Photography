@@ -2,9 +2,11 @@
 <?php 
 ini_set("display_errors", "1"); // per mostrar els errors
 require_once ('template.php');
+require_once ('personalization/Template_Personalization.php');
 $t = new Template();
 $album = $_GET['album'];
 $album = unserialize($album);
+$p = new T_Personalization();
 ?>
 <!-- DON'T TOUCH THIS SECTION -->
 <html>
@@ -14,7 +16,7 @@ $album = unserialize($album);
 <!-- END OF DON'T TOUCH -->
 
 <!-- Website Title -->
-<title>Liquid Gem</title>
+<title><?php $p -> print_title_page()?></title>
 <!-- END OF Website Title -->
 
 <!--  Website description - Change the 'content' section to whatever you want -->
@@ -33,7 +35,7 @@ $t -> includes();
 	<div id="top">
         <div id="logo">
             <img id="logoimage" src="images/logo.png" alt="logo">	<!-- Logo image -->
-            <h1 id="logotitle">liquid gem</h1>	<!-- Logo text -->
+            <h1 id="logotitle"><?php $p -> print_title_page()?></h1>	<!-- Logo text -->
         </div><!--/logo-->
     
         <!-- Navigation Start -->

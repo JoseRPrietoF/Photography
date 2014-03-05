@@ -617,12 +617,12 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 	font-family:Cookie, Arial, Helvetica, sans-serif;
 	text-align:center;
 	margin-top:4%;
-	width:48%;
+	width:120%;
 	float:left;
 	margin-bottom:2%;
 }
 
-.admin div{
+.admin div div{
 	font-family:Cookie, Arial, Helvetica, sans-serif;
 	font-size:180%;
 	font-weight:normal;
@@ -646,6 +646,10 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 .admin .titleForm{
 	font-size:50px;
 	color: blue;
+	margin: 0 20% 0 0;
+}
+.admin .button{
+	margin: 0 20% 0 0;
 }
 
 .admin h4{
@@ -656,7 +660,37 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 	margin-bottom:10px;
 }
 
-.admin input{
-	
+.admin div{
+	width: 50%;
+}
+.adminLeft{
+	float: left;
+}
+.adminRight{
+	float: right;
+}
+.titleForm{
+	text-align: center;
+}
+.add{
+	background-color: transparent;
+}
+.plus{
+	margin: 25%;
+}
+.addPhotos{
+	margin: 0 50%;
+}
+.addPhotos:hover{
+	color:#33CCCC;
+	cursor:pointer;
+}
+.deleteMediaLink{
+	font-size: 80%;
+	text-decoration:none; 
+}
+.deleteAlbumLink{
+	font-size: 80%;
+	text-decoration:none; 
 }
 	

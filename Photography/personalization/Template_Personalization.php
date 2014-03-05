@@ -58,7 +58,6 @@ class T_Personalization {
 		//else echo '<alert> No existe la carpeta personalitzation</alert>';
 		fwrite($fh, $jsonencoded);
 		fclose($fh);
-		echo '<alert> h </alert>';
 	}
 	
 	function print_about_me_title(){
@@ -111,7 +110,7 @@ class T_Personalization {
 	function createJson(){
 		// About me
 		$this -> about_me_text = utf8_encode("Hey there, my name is Mariam
-		 and I am a photographer and web developer!
+		 and I am a photographer!
 		 This is my brand new portfolio. It's super cool
 		because it's completely responsive! That means
 		 you can re-size it to whatever

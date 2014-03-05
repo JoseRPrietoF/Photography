@@ -83,7 +83,7 @@ $t -> includes();
     </aside>
     <aside class="right">
     	<h3><?php $p->print_my_work_title()?></h3>
-    	<p><?php $p->print_about_me_text()?></p>
+    	<p><?php $p->print_my_work_text()?></p>
     </aside>
     <div class="clearfix"></div> <!-- Text Section End -->
     

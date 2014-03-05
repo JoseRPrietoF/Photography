@@ -40,7 +40,7 @@ class Template
 		if ($this -> checkRangUser()){
 			echo '<a href="operations/deleteAlbum.php?album='.urlencode(serialize($album)).'"
 					class="deleteAlbumLink">
-					<div class="deleteAlbum"><i class="fa fa-minus-square-o"></i> </div>
+					<div class="deleteAlbum"><i class="fa fa-minus-square-o"> Delete this album</i> </div>
 					</a>';
 		}
 	}
@@ -82,8 +82,8 @@ class Template
 			if($user->getRang() > 1) // Comprovem el rang dels usuaris
 			{
 				echo '<a href="newAlbum.php">';
-				echo '<div class="item">';
-				echo '<i class="fa fa-plus fa-5x"></i>';
+				echo '<div class="item add">';
+				echo '<i class="fa fa-plus fa-5x plus"></i>';
 				echo ' </div><!--/item--></a><!-- Image must be 400px by 300px -->';
 			}
 		}
@@ -95,7 +95,7 @@ class Template
 		{
 			echo '<a href="operations/deleteMedia.php?media='.urlencode(serialize($media)).'" 
 					class="deleteMediaLink">
-					<div class="deletePhoto"><i class="fa fa-minus-square-o"></i> </div>
+					<div class="deletePhoto"><i class="fa fa-minus-square-o"></i> Delete this photo </div>
 					</a>';
 		}
 	}
@@ -122,8 +122,8 @@ class Template
 			if($user->getRang() > 1) // Comprovem el rang dels usuaris
 			{
 				echo '<a href="newMedia.php?albumId='.$id.'">
-				<i class="fa fa-plus fa-5x"></i> ';
-				echo '<h2>Add more photos or videos</h2></a>';
+				<i class="fa fa-plus fa-5x addPhotos"></i> ';
+				echo '<h2></h2></a>';
 				echo '</br></br></br></br></br></br></br></br></br>';
 			}
 		}
