@@ -434,5 +434,20 @@ class photos
 		return false;
 	}
 	
+	function updateMedia($name, $description, $media){
+		$query = 'UPDATE media SET name = "'.$name.'", description = "'.$description.'"
+				WHERE idMedia = '.$media->getId();
+		if ($this->con->query($query) )
+		{
+			if ( $this->con->query($query) )
+				return true;
+			else
+				echo '<script>alert("Error al modificar las fotos en la DB");</script>'; //
+		} else{
+		echo '<script>alert("Error al modificar el album en la DB");</script>'; //
+		return false;
+		}
+	}
+	
 }
 ?>

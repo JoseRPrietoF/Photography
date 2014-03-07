@@ -39,7 +39,7 @@ class Template
 	public function deleteAlbumButton($album){
 		if ($this -> checkRangUser()){
 			echo '<a href="operations/deleteAlbum.php?album='.urlencode(serialize($album)).'"
-					class="deleteAlbumLink">
+					class="deleteAlbumLink"  onclick="return confirmar()">
 					<div class="deleteAlbum"><i class="fa fa-minus-square-o"> Delete this album</i> </div>
 					</a>';
 		}
@@ -58,7 +58,8 @@ class Template
 				<script type="text/javascript" src="scripts/jquery.form.js"></script> 
 				<script type="text/javascript" src="scripts/scripts.js"></script>
 				<script type="text/javascript" src="scripts/smoothbox.min.js"></script>
-				<script type="text/javascript" src="scripts/smoothbox.js"></script> ';
+				<script type="text/javascript" src="scripts/smoothbox.js"></script> 
+				<script type="text/javascript" src="scripts/functions.js"></script>';
 	}
 	
 	public function printAlbums()
@@ -94,8 +95,11 @@ class Template
 		if($this -> checkRangUser())
 		{
 			echo '<a href="operations/deleteMedia.php?media='.urlencode(serialize($media)).'" 
-					class="deleteMediaLink">
-					<div class="deletePhoto"><i class="fa fa-minus-square-o"></i> Delete this photo </div>
+					class="deleteMediaLink"  onclick="return confirmar()">
+					<div class="deletePhoto"><i class="fa fa-minus-square-o"></i> Delete </div>
+					</a>';
+			echo '<a href="updateMedia.php?media='.urlencode(serialize($media)).'">
+					<div class="deletePhoto modifyLinkMedia"><i class="fa fa-refresh"></i> Update this photo </div>
 					</a>';
 		}
 	}

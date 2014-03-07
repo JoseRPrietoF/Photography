@@ -6,6 +6,7 @@ require_once ('personalization/Template_Personalization.php');
 $t = new Template();
 $album = $_GET['album'];
 $album = unserialize($album);
+$_SESSION['album'] = serialize($album);
 $p = new T_Personalization();
 ?>
 <!-- DON'T TOUCH THIS SECTION -->
@@ -45,7 +46,6 @@ $t -> includes();
     
     
     <hr/><!-- Horizontal Line -->
-    
     
     <header><!-- Work Showcase Section Start -->
     
@@ -124,6 +124,7 @@ $("#slider").carouFredSel({
 	}
 });
 </script>
+
 <!-- SLIDESHOW SCRIPT END -->
 </body>
 </html>

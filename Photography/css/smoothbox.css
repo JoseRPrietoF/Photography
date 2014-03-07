@@ -196,10 +196,14 @@ body, html {
 	margin:0 auto 0 auto;
 }
 .deleteMediaLink {
-
+	float: right;
 }
 .deleteAlbumLink{
 	
+}
+.modifyLinkMedia{
+	height: 20px;
+	font-size: 10px;
 }
 .deleteAlbum{
 	
