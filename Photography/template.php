@@ -42,6 +42,10 @@ class Template
 					class="deleteAlbumLink"  onclick="return confirmar()">
 					<div class="deleteAlbum"><i class="fa fa-minus-square-o"> Delete this album</i> </div>
 					</a>';
+			echo '<a href="updateAlbum.php"
+					class="deleteAlbumLink" >
+					<div class="deleteAlbum"><i class="fa fa-minus-square-o"> Update this album</i> </div>
+					</a>';
 		}
 	}
 	
@@ -163,11 +167,7 @@ class Template
 	        </nav>	<!-- Navigation End -->';
 		}
 	}
-	
-	public function login()
-	{
-		
-	}
+
 	
 }
 

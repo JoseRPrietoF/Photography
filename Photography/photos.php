@@ -1,4 +1,5 @@
 <?php 
+use Zend\Db\Sql\Insert;
 require_once ('dades.php');
 require_once ('album.php');
 require_once ('Media.php');
@@ -247,7 +248,9 @@ class photos
 	function insertItem($item,$album)
 	{
 		$idAlbum = $this->getAlbumID($album);
+		echo '</br> '.$idAlbum.' </br>';
 		$dst = '../albums/album' . $idAlbum . '/item.png'; // name
+		echo $dst;
 		if ( is_uploaded_file($item) ) {
 			move_uploaded_file($item, $dst);
 			$this -> redim(400,300,$dst);
@@ -262,7 +265,6 @@ class photos
 		$albumName = $this->con->real_escape_string($albumName);
 		$query = "INSERT INTO album (nameAlbum, category, Description) 
 		VALUES ('$albumName','$category','$description')";
-		
 		if ($this->con->query($query) )
 		{
 			
@@ -355,6 +357,7 @@ class photos
 	{
 		$this -> deleteRealMedia($Media);
 		$this -> deleteMediaDB($Media);
+		header('Location: ../index.php');
 	}
 	
 	private function deleteMediaDB($Media) 
@@ -446,6 +449,24 @@ class photos
 		} else{
 		echo '<script>alert("Error al modificar el album en la DB");</script>'; //
 		return false;
+		}
+	}
+	
+	function updateAlbum($name, $category, $description, $item, $album){
+		$query = 'UPDATE album SET nameAlbum = "'.$name.'", Description = "'.$description.'",
+				 category = "'.$category.'" 
+				WHERE idAlbum = '.$album->getId();
+		echo $item;
+		if ($this->con->query($query) )
+		{
+			if ($item != false){
+				$dst = '../albums/album' . $album->getId() . '/item.png'; // name
+				unlink($dst);
+				$this->insertItem($item, $name);
+			}
+		} else{
+			echo '<script>alert("Error al modificar el album en la DB");</script>'; //
+			return false;
 		}
 	}
 	

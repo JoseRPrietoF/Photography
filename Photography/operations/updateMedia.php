@@ -13,7 +13,7 @@ if (isset($_POST['name']) && $_POST['name'] != ""){
 } else $name = $media -> getName();
 if (isset($_POST['description']) && $_POST['description'] != ""){
 	$description = $_POST['description'];
-} else $description = $media -> getName();
+} else $description = $media -> getDescription();
 
 
 $p->updateMedia($name, $description, $media);

@@ -86,7 +86,7 @@ $t -> includes();
     
     <aside id="about" class=" left"> <!-- Text Section Start -->
     	<form action="operations/addMedias.php" method="post" enctype="multipart/form-data">
-	    	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+	    	<input type="hidden" name="MAX_FILE_SIZE" value="20000000000">
 	    	<h4>Album: <?php echo $album -> getName();?> </h4>
 	    	</br>
 	    	</br></br></br>

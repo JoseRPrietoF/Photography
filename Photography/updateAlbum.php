@@ -99,7 +99,7 @@ $t -> includes();
 	    	</br>
 	    	<input name='item' type='file'>
 	    	</br> </br> </br> </br>
-	    	<input class="button" type="submit" value="Create" name="boto">
+	    	<input class="button" type="submit" value="Modify" name="boto">
     	</form>
     </aside>
     <div class="clearfix"></div> <!-- Text Section End -->
